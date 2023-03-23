@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:56:34 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/22 18:56:37 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:33:59 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
+# include <iostream>
 
 class Phonebook {
 	
 private:
 
+	Contact		_list[8];
+	static int	_next_empty_index;
+	void		_get_info(Contact cont, int i);
+	void		_cout_info(std::string str);
+
 public:
-	Contact	list[8];
-	void	add();
-	void	search();
-	int		empty_page();
-	void	get_info(Contact cont);
-	void	Phonebook::put_info(std::string str);
-	
+
 	Phonebook(void);
 	~Phonebook(void);
+
+	void		add();
+	void		search();
 };
 
 #endif

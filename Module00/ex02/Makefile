@@ -1,14 +1,13 @@
-NAME	= phonebook
+NAME	=	account
 
-SRCS	=	Phonebook.cpp	\
-			Contact.cpp		\
-			main.cpp
+SRCS	=	tests.cpp \
+			Account.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
 CP		= c++
 
-PFLAGS	= -Wall -Werror -Werror -std=c++98
+PFLAGS	= -std=c++98 #-Wall -Werror -Werror
 
 all:	$(NAME)
 

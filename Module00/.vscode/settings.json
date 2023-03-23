@@ -26,6 +26,17 @@
 		"system_error": "cpp",
 		"type_traits": "cpp",
 		"typeinfo": "cpp",
-		"iomanip": "cpp"
+		"iomanip": "cpp",
+		"array": "cpp",
+		"ctime": "cpp",
+		"sstream": "cpp",
+		"tuple": "cpp",
+		"utility": "cpp",
+		"deque": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"functional": "cpp",
+		"optional": "cpp",
+		"ranges": "cpp"
 	}
 }

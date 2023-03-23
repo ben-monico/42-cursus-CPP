@@ -6,34 +6,29 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:28:49 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/22 18:57:48 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:34:45 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 #include <string>
 #include <cctype>
 #include "Phonebook.hpp"
 
 Phonebook::Phonebook(void)
 {
-	std::cout << "Phonebook constructed" << std::endl;
+	std::cout << "[Phonebook constructed]" << std::endl;
 }
+
+int Phonebook::_next_empty_index = 0;
 
 Phonebook::~Phonebook(void)
 {
-	std::cout << "Phonebook destructed" << std::endl;
+	std::cout << "[Phonebook destructed]" << std::endl;
 }
 
-int	Phonebook::empty_page(void)
-{
-	static int i;
-	
-	if (i == 8)
-		i = 0;
-	return (i++);
-}
 
 void	Phonebook::add(void)
 {
@@ -62,27 +57,29 @@ void	Phonebook::add(void)
 	}
 	for (int k = 0; k < str[3].size(); k++)
 	{
-		if (!isdigit(str[3][k]) && str[3][k] != '+')
+		if (!isdigit(str[3][k]) && str[3][k] != '+' && str[3][k] != '-')
 		{
 			std::cerr << "Error. Phone numbers can only contain digits." << std::endl;
 			return ;
 		}
 	}
-	i = this->empty_page();
-	this->list[i].first_name = str[0];
-	this->list[i].last_name = str[1];
-	this->list[i].nickname = str[2];
-	this->list[i].phone_number = str[3];
-	this->list[i].secret = str[4];
+	if (this->_next_empty_index == 8)
+		this->_next_empty_index = 0;
+	i = this->_next_empty_index++;
+	this->_list[i].first_name = str[0];
+	this->_list[i].last_name = str[1];
+	this->_list[i].nickname = str[2];
+	this->_list[i].phone_number = str[3];
+	this->_list[i].secret = str[4];
 	std::cout << "Contact successfully added." << std::endl;
 }
 
-void	Phonebook::put_info(std::string str)
+void	Phonebook::_cout_info(std::string str)
 {
 	int w = 0;
 
 	if (str.size() < 10)
-		w = 10 - str.size();
+		w = 11 - str.size();
 	std::cout << std::setw(w);
 	for (int i = 0; i < str.size(); i++)
 	{
@@ -95,26 +92,36 @@ void	Phonebook::put_info(std::string str)
 	}
 }
 
-void	Phonebook::get_info(Contact cont)
+void	Phonebook::_get_info(Contact cont, int i)
 {
-	put_info(cont.first_name);
-	put_info(cont.last_name);
-	put_info(cont.nickname);
-
+	if (cont.first_name.empty())
+		return ;
+	std::cout << std::setw(9) << i << "|";
+	_cout_info(cont.first_name);
+	std::cout << "|";
+	_cout_info(cont.last_name);
+	std::cout << "|";
+	_cout_info(cont.nickname);
+	std::cout << std::endl;
 }
 
 void	Phonebook::search(void)
 {
-	std::string index;
+	std::string ind;
 
 	for (int i = 0; i < 8; i++)
-		put_info(this->list[i]);	
-	std::cout << "Write the desired contact index: ";
-	std::getline(std::cin, index);
-	if (index.size() != 1 || (index.size() == 1 && (index[0] < '0' || index[0] > '7')))
+		_get_info(this->_list[i], i);	
+	std::cout << "Write the desired contact ind: ";
+	std::getline(std::cin, ind);
+	if (ind.size() != 1 || (ind.size() == 1 && ((ind[0] < '0' || ind[0] > '7') || \
+		 this->_list[std::atoi(ind.c_str())].first_name.empty())))
 	{
-		std::cerr << "Error. Index out of range." << std::endl;
+		std::cerr << "Error. index out of range." << std::endl;
 		return ;
 	}
-	
+	std::cout << this->_list[std::atoi(ind.c_str())].first_name << std::endl;
+	std::cout << this->_list[std::atoi(ind.c_str())].last_name << std::endl;
+	std::cout << this->_list[std::atoi(ind.c_str())].nickname << std::endl;
+	std::cout << this->_list[std::atoi(ind.c_str())].phone_number << std::endl;
+	std::cout << this->_list[std::atoi(ind.c_str())].secret << std::endl;
 }
