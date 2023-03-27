@@ -130,6 +130,17 @@ void Account::_displayTimestamp( void )
 	std::cout << "[" << 1900 + time->tm_year;
 	if (time->tm_mon < 9)
 		std::cout << "0";
-	std::cout << 1 + time->tm_mon << time->tm_mday;
-	std::cout << "_" << time->tm_hour << time->tm_min << time->tm_sec << "] ";
+	std::cout << 1 + time->tm_mon;
+	if (time->tm_mday < 10)
+		std::cout << "0";
+	std::cout << time->tm_mday << "_";
+	if (time->tm_hour < 10)
+		std::cout << "0";
+	std::cout << time->tm_hour;
+	if (time->tm_min < 10)
+		std::cout << "0"; 
+	std::cout << time->tm_min;
+	if (time->sec < 10)
+		std::cout << "0"; 
+	std::cout << time->tm_sec << "] ";
 }

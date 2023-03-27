@@ -22,8 +22,8 @@ private:
 
 	Contact		_list[8];
 	static int	_next_empty_index;
-	void		_get_info(Contact cont, int i);
-	void		_cout_info(std::string str);
+	void		_get_info(Contact cont, int i) const;
+	void		_cout_info(std::string str) const;
 
 public:
 
@@ -31,7 +31,7 @@ public:
 	~Phonebook(void);
 
 	void		add();
-	void		search();
+	void		search() const;
 };
 
 #endif

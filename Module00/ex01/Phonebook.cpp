@@ -55,7 +55,7 @@ void	Phonebook::add(void)
 			return ;
 		}
 	}
-	for (int k = 0; k < str[3].size(); k++)
+	for (int k = 0; k < (int)str[3].size(); k++)
 	{
 		if (!isdigit(str[3][k]) && str[3][k] != '+' && str[3][k] != '-')
 		{
@@ -74,16 +74,16 @@ void	Phonebook::add(void)
 	std::cout << "Contact successfully added." << std::endl;
 }
 
-void	Phonebook::_cout_info(std::string str)
+void	Phonebook::_cout_info(std::string str) const
 {
 	int w = 0;
 
 	if (str.size() < 10)
 		w = 11 - str.size();
 	std::cout << std::setw(w);
-	for (int i = 0; i < str.size(); i++)
+	for (int i = 0; i < (int)str.size(); i++)
 	{
-		if (i == 9 && str.size() > 9)
+		if (i == 9 && str.size() > 10)
 		{
 			std::cout << ".";
 			break ;
@@ -92,7 +92,7 @@ void	Phonebook::_cout_info(std::string str)
 	}
 }
 
-void	Phonebook::_get_info(Contact cont, int i)
+void	Phonebook::_get_info(Contact cont, int i) const
 {
 	if (cont.first_name.empty())
 		return ;
@@ -105,7 +105,7 @@ void	Phonebook::_get_info(Contact cont, int i)
 	std::cout << std::endl;
 }
 
-void	Phonebook::search(void)
+void	Phonebook::search(void) const
 {
 	std::string ind;
 
