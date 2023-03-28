@@ -140,7 +140,7 @@ void Account::_displayTimestamp( void )
 	if (time->tm_min < 10)
 		std::cout << "0"; 
 	std::cout << time->tm_min;
-	if (time->sec < 10)
+	if (time->tm_sec < 10)
 		std::cout << "0"; 
 	std::cout << time->tm_sec << "] ";
 }

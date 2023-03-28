@@ -1,13 +1,14 @@
-NAME	=	account
+NAME	=	horde
 
-SRCS	=	tests.cpp \
-			Account.cpp
+SRCS	=	main.cpp \
+			Zombie.cpp \
+			zombieHorde.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
 CP		= c++
 
-PFLAGS	= -std=c++98 -I. -g -Wall -Werror -Werror
+PFLAGS	= -std=c++98 -g -Wall -Werror -Werror -fsanitize=address
 
 all:	$(NAME)
 

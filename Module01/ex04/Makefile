@@ -1,13 +1,12 @@
-NAME	=	account
+NAME	=	file_replace
 
-SRCS	=	tests.cpp \
-			Account.cpp
+SRCS	=	main.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
 CP		= c++
 
-PFLAGS	= -std=c++98 -I. -g -Wall -Werror -Werror
+PFLAGS	= -std=c++98 -g -Wall -Werror -Werror -fsanitize=address
 
 all:	$(NAME)
 
