@@ -1,4 +1,4 @@
-NAME	=	file_replace
+NAME	=	strreplace
 
 SRCS	=	main.cpp
 
@@ -21,6 +21,7 @@ clean:
 
 fclean:	clean
 		@rm -f $(NAME)
+		@rm -f *.replace
 
 re: fclean all
 
