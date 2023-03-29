@@ -6,11 +6,14 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 23:24:04 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/29 01:47:34 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/29 02:14:35 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
+
+# include <iostream>
 
 class Harl
 {
@@ -27,3 +30,4 @@ class Harl
 		void complain( std::string level );
 };
 
+#endif
