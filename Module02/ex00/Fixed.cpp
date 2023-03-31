@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:40:35 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/31 02:08:24 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:11:34 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ Fixed::~Fixed()
 	std::cout << "\e[0;31mDestructor called\e[0m" << std::endl;
 }
 
-Fixed & Fixed::operator=(const Fixed &assign)
+Fixed &Fixed::operator=(const Fixed &assign)
 {
-	(void) assign;
+	this->setRawBits(assign.getRawBits());
 	std::cout << "\e[0;33mCopy assignment operator called\e[0m" << std::endl;
 	return *this;
 }

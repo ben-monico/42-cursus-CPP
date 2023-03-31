@@ -6,27 +6,28 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:40:35 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/31 02:12:22 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:37:26 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
+#include <stdio.h>
 
-Fixed::Fixed() : _fixedpoint(0)
+Fixed::Fixed()
 {
+	this->setRawBits(0);
 	std::cout << "\e[0;33mDefault Constructor called\e[0m" << std::endl;
 }
 
-Fixed::Fixed( const float f ) : _fixedpoint( roundf(f * (float)(1 << _fract)))
+Fixed::Fixed( const float f ) : _fixedpoint(roundf(f *(1 << _fract)))
 {
-	std::cout << "Float constructor called\n";
+	std::cout << "Float constructor called\n" << std::endl;
 }
 
-Fixed::Fixed(const int i)
+Fixed::Fixed(const int i) : _fixedpoint(i << _fract)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_fixedpoint = i << _fract;
 }
 
 Fixed::Fixed(const Fixed &copy) : _fixedpoint(copy.getRawBits())
@@ -63,7 +64,7 @@ void Fixed::setRawBits( int const raw )
 
 Fixed &Fixed::operator=(const Fixed &assign)
 {
-	(void) assign;
+	this->setRawBits(assign.getRawBits());
 	std::cout << "\e[0;33mCopy assignment operator called\e[0m" << std::endl;
 	return *this;
 }
