@@ -6,13 +6,15 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:40:35 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/01 20:23:28 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:25:44 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
 #include <stdio.h>
+
+const int Fixed::_fract = 8;
 
 Fixed::Fixed()
 {

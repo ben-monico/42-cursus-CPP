@@ -7,7 +7,7 @@ OBJS	= $(SRCS:.cpp=.o)
 
 CP		= c++
 
-PFLAGS	= -std=c++98 -g -Wall -Werror -Werror -fsanitize=addres
+PFLAGS	= -std=c++98 -g -Wall -Werror -Werror -fsanitize=address
 
 all:	$(NAME)
 

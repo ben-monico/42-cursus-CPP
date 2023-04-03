@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:38:24 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/31 18:58:33 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:28:51 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class Fixed
 		
 	private:
 		int _fixedpoint;
-		const static int _fract = 8;
+		const static int _fract;
 		
 };
 

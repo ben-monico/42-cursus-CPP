@@ -6,11 +6,13 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:40:35 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/31 16:11:34 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:22:43 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::_fract = 8;
 
 Fixed::Fixed() : _fixedpoint(0)
 {
