@@ -6,23 +6,26 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:03:23 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/03 19:36:24 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:46:42 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : _name("Unknown"), ClapTrap()
+DiamondTrap::DiamondTrap() : _name("Unknown"), ClapTrap("Unknown_clap_name"), ScavTrap(), FragTrap()
 {
+	FragTrap::setHP(FragTrap::getHP());
+	ScavTrap::setEP(ScavTrap::getEP());
+	FragTrap::setAD(FragTrap::getAD());
 	std::cout << "[DiamondTrap Default Constructor called on " << _name << "]" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : _name(name), ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string _name) : _name(_name), ClapTrap(_name + "_clap_name"), ScavTrap(_name), FragTrap(_name)
 {
 	std::cout << "[DiamondTrap parameterized Constructor called on " << _name << "]" << std::endl;
-	this->setHP(100);
-	this->setEP(100);
-	this->setAD(30);
+	FragTrap::setHP(FragTrap::getHP());
+	ScavTrap::setEP(ScavTrap::getEP());
+	FragTrap::setAD(FragTrap::getAD());
 }
 
 DiamondTrap::~DiamondTrap()
@@ -32,21 +35,29 @@ DiamondTrap::~DiamondTrap()
 
 DiamondTrap::DiamondTrap(DiamondTrap const &S) : _name(S._name)
 {
-	this->setHP(S.getHP());
-	this->setEP(S.getEP());
-	this->setAD(S.getAD());
+	this->FragTrap::setHP(S.FragTrap::getHP());
+	this->ScavTrap::setEP(S.ScavTrap::getEP());
+	this->FragTrap::setAD(S.FragTrap::getAD());
 	std::cout << "[DiamondTrap Copy Constructor called on " << this->_name << "]" << std::endl;
 }
 
 void DiamondTrap::operator=(const DiamondTrap &S)
 {
-	this->setHP(S.getHP());
-	this->setEP(S.getEP());
-	this->setAD(S.getAD());
+	this->FragTrap::setHP(S.FragTrap::getHP());
+	this->ScavTrap::setEP(S.ScavTrap::getEP());
+	this->FragTrap::setAD(S.FragTrap::getAD());
 }
 
-void DiamondTrap::highFivesGuys()
+void DiamondTrap::attack(const std::string& target)
 {
-	std::cout << "\e[0;34m[DiamondTrap \e[0m" << this->_name << "\e[0;34m requests a positive high five before his whoop-ass delivery.\e[0m" << std::endl;
+	// if (!ScavTrap::checkStats())
+	// 	return ;
+	// this->ScavTrap::setEP(ScavTrap::getEP() - 1);
+	// std::cout << "\e[0;33mScavTrap \e[0m" << this->_name << "\e[0;33m slapped the living sh*t outta \e[0m" << target << " " << this->FragTrap::getAD() << "\e[0;33m times.\e[0m" << std::endl;
+	ScavTrap::attack(target);
 }
 
+void DiamondTrap::whoAmI(void)
+{
+	std::cout << "[I am " << this->_name << " and " << this->_name << "." << std::endl;
+}

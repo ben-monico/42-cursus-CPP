@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:18:57 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/03 19:08:41 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:16:32 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,18 @@ void ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "\e[0;32m[ClapTrap \e[0m" << this->_name << "\e[0;32m repaired himself for \e[0m" << amount << "\e[0;32m. Total HP: \e[0m" << this->_hitPoints << std::endl;	
 }
 
-int ClapTrap::getHP() const{ return _hitPoints; };
+int ClapTrap::getHP() const{ return _hitPoints; }
 
-int ClapTrap::getEP() const{ return _energyPoints; };
+int ClapTrap::getEP() const{ return _energyPoints; }
 
-int ClapTrap::getAD() const{ return _attackDamage; };
+int ClapTrap::getAD() const{ return _attackDamage; }
 
-void ClapTrap::setHP(int HP){ _hitPoints = HP; };
+std::string ClapTrap::getName() const { return _name; }
 
-void ClapTrap::setEP(int EP){ _energyPoints = EP; };
+void ClapTrap::setHP(int HP){ _hitPoints = HP; }
 
-void ClapTrap::setAD(int AD){ _attackDamage = AD; };
+void ClapTrap::setEP(int EP){ _energyPoints = EP; }
+
+void ClapTrap::setAD(int AD){ _attackDamage = AD; }
+
+void ClapTrap::setName(std::string name){ _name = name; }
