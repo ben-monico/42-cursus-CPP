@@ -1,13 +1,15 @@
-NAME	=	fix_point
+NAME	=	bsp
 
 SRCS	=	Fixed.cpp \
+			Point.cpp \
+			bsp.cpp \
 			main.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
 CP		= c++
 
-PFLAGS	= -std=c++98 -g -Wall -Werror -Werror
+PFLAGS	= -std=c++98 -g -Wall -Werror -Werror #-fsanitize=address
 
 all:	$(NAME)
 
@@ -24,5 +26,6 @@ fclean:	clean
 		@rm -f $(NAME)
 
 re: fclean all
+
 
 .PHONY: all re clean fclean

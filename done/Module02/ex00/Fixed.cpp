@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:40:35 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/03 23:22:43 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:24:16 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Fixed::Fixed() : _fixedpoint(0)
 Fixed::Fixed(const Fixed &copy)
 {
 	std::cout << "\e[0;33mCopy Constructor called\e[0m" << std::endl;
-	Fixed::_fixedpoint = copy._fixedpoint;
+	this->setRawBits(copy.getRawBits());
 }
 
 Fixed::~Fixed()
@@ -32,19 +32,18 @@ Fixed::~Fixed()
 
 Fixed &Fixed::operator=(const Fixed &assign)
 {
-	this->setRawBits(assign.getRawBits());
 	std::cout << "\e[0;33mCopy assignment operator called\e[0m" << std::endl;
+	this->setRawBits(assign.getRawBits());
 	return *this;
 }
 
 int Fixed::getRawBits( void ) const
 {
 	std::cout << "\e[0;35mgetRawBits member function called\e[0m" << std::endl;
-	return Fixed::_fixedpoint;
+	return this->_fixedpoint;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	std::cout << "\e[0;35msetRawBits member function called\e[0m" << std::endl;
-	Fixed::_fixedpoint = raw;
+	this->_fixedpoint = raw;
 }

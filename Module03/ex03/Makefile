@@ -10,7 +10,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 
-FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -g -fsanitize=address 
+FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -g #-fsanitize=address 
 
 all: $(NAME)
 

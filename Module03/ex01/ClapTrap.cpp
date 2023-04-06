@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 15:18:57 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/03 19:08:41 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:42:09 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (!checkStats())
+	if (!_hitPoints)
 		return ;
 	this->_hitPoints -= amount;
 	if (_hitPoints < 0) _hitPoints = 0;

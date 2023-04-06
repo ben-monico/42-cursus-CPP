@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:02:49 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/05 03:05:32 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:29:36 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class ScavTrap : virtual public ClapTrap
 {
 private:
 	std::string _name;
+
+protected:
 
 public:
 	ScavTrap();

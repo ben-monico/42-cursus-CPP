@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:11:40 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/05 02:20:11 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:13:19 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ class FragTrap : virtual public ClapTrap
 private:
 	std::string _name;
 
-public:
+protected:
 	FragTrap();
+
+public:
 	FragTrap(std::string name);
 	FragTrap(FragTrap const &S);
 	~FragTrap();

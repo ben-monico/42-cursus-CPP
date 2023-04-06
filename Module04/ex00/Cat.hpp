@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 00:38:24 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/03 22:55:54 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/04/06 19:28:58 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/04/06 19:31:49 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#ifndef CAT_HPP_
+# define CAT_HPP_
 
-# include <iostream>
-# include <string>
+#include "Animal.hpp"
 
-class Fixed
+class Cat : public Animal
 {
-	public:
-		Fixed();
-		Fixed(const Fixed &copy);
+private:
+	Cat(/* args */);
 
-		~Fixed();
-
-		Fixed & operator=(const Fixed &assign);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-		
-	private:
-		int _fixedpoint;
-		static const int _fract;
-		
+public:
+	Cat(Cat const &C);
+	~Cat();
+	Cat &operator =(Cat const &C);
+	virtual void makeSound();
 };
 
-#endif
+
+
+#endif // CAT_HPP_

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:03:23 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/03 19:07:20 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:36:46 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void ScavTrap::operator=(const ScavTrap &S)
 
 void ScavTrap::guardGate()
 {
+	if (!checkStats())
+		return ;
 	std::cout << "\e[0;35m[ScavTrap \e[0m" << this->_name << "\e[0;35m is in gateKeeper mode]\e[0m" << std::endl;
-	
 }
 
 void ScavTrap::attack(const std::string& target)
