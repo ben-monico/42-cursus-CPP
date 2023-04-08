@@ -6,38 +6,48 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 19:28:54 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/08 01:51:17 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:49:24 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal()
+Dog::Dog(void) : AAnimal()
 {
 	this->type = "Unknown";
 	std::cout << "[Dog Default constructor " << this->type << "]" << std::endl;
+	this->_brain = new Brain;
 }
 
-Dog::Dog(std::string name) : Animal(name)
+Dog::Dog(std::string name) : AAnimal(name)
 {
 	this->type = name;
 	std::cout << "[Dog Parameterized constructor " << this->type << "]" << std::endl;
+	this->_brain = new Brain;
 }
 
 Dog::~Dog(void)
 {
+	delete this->_brain;
 	std::cout << "[Dog Default destructor " << this->type << "]" << std::endl;
 }
 
-Dog::Dog(Dog const &C) : Animal(type)
+Dog::Dog(Dog const &C) : AAnimal(type)
 {
+	this->_brain = new Brain;
 	this->type = C.type;
 	std::cout << "[Dog Copy constructor " << this->type << "]" << std::endl;
 }
 
 Dog &Dog::operator =(Dog const &C)
 {
-	this->type = C.type;
+	if (this != &C)
+	{
+		if (this->_brain)
+			delete this->_brain;
+		this->_brain = new Brain;
+		this->type = C.type;
+	}
 	std::cout << "[Dog AO " << this->type << "]" << std::endl;
 	return *this;
 }

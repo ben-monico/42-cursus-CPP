@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 17:40:11 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/07 20:55:05 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/04/06 19:27:46 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/04/08 01:41:10 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP_
-# define ANIMAL_HPP_
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-# include <iostream>
-
-class Animal
+int main()
 {
-protected:
-	std::string type;
+	unsigned int n = 9;
+	Animal *horde[n];
 
-public:
-	Animal();
-	Animal(std::string name);
-	Animal(Animal const &A);
-	virtual ~Animal();
-	Animal &operator=(Animal const &A);
-
-	virtual void	makeSound() const;
-	virtual std::string getType() const;
-};
-
-
-
-#endif // ANIMAL_HPP_
+	for (unsigned int i = 0; i < n; i++)
+		i < n/2 ? horde[i] = new Cat() : horde[i] = new Dog();
+	for (unsigned int i = 0; i < n; i++)
+		horde[i]->makeSound();
+	for (unsigned int i = 0; i < n; i++)
+		delete horde[i];
+}

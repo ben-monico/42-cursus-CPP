@@ -1,7 +1,7 @@
 CC			= 	g++ -std=c++98
 CFLAGS		= 	-Wall -Wextra -Werror -Wshadow  -g\
 				# -fsanitize=address
-NAME		= 	animal
+NAME		= 	materia
 SRCS		=	$(wildcard *.cpp)
 
 all: $(NAME)

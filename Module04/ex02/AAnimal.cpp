@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,42 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal(void) : type("Unknown Animal")
+AAnimal::AAnimal(void) : type("Unknown AAnimal")
 {
-	std::cout << "[Animal Default Constructor " << this->type << "]" << std::endl;	
+	std::cout << "[AAnimal Default Constructor " << this->type << "]" << std::endl;	
 }
 
-Animal::Animal(std::string name) : type(name)
+AAnimal::AAnimal(std::string name) : type(name)
 {
-	std::cout << "[Animal Parameterized Constructor " << this->type << "]" << std::endl;	
+	std::cout << "[AAnimal Parameterized Constructor " << this->type << "]" << std::endl;	
 }
 
-Animal::Animal(Animal const &A)
+AAnimal::AAnimal(AAnimal const &A)
 {
 	this->type = A.type;
-	std::cout << "[Animal Copy Constructor " << this->type << "]" << std::endl;	
+	std::cout << "[AAnimal Copy Constructor " << this->type << "]" << std::endl;	
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
-	std::cout << "[Animal Destructor " << this->type << "]" << std::endl;	
+	std::cout << "[AAnimal Destructor " << this->type << "]" << std::endl;	
 }
 
-Animal &Animal::operator=(Animal const &A)
+AAnimal &AAnimal::operator=(AAnimal const &A)
 {
 	this->type = A.type;
-	std::cout << "[Animal AO " << this->type << "]" << std::endl;	
+	std::cout << "[AAnimal AO " << this->type << "]" << std::endl;	
 	return *this;
 }
 
-void	Animal::makeSound() const
-{
-	std::cout << "Animal sounds" << std::endl;	
-}
-
-std::string Animal::getType() const
-{
-	return this->type;
-}

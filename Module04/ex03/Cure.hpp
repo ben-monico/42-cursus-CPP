@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 17:40:11 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/07 20:55:05 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/04/08 01:57:11 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/04/08 01:58:50 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP_
-# define ANIMAL_HPP_
+#ifndef CURE_HPP
+# define CURE_HPP
 
 # include <iostream>
+# include <string>
+# include "AMateria.hpp"
 
-class Animal
+
+class Cure
 {
-protected:
-	std::string type;
-
-public:
-	Animal();
-	Animal(std::string name);
-	Animal(Animal const &A);
-	virtual ~Animal();
-	Animal &operator=(Animal const &A);
-
-	virtual void	makeSound() const;
-	virtual std::string getType() const;
+	public:
+		// Constructors
+		Cure();
+		Cure(const Cure &copy);
+		
+		// Destructor
+		~Cure();
+		
+		// Operators
+		Cure & operator=(const Cure &assign);
+		
+	private:
+		
 };
 
-
-
-#endif // ANIMAL_HPP_
+#endif

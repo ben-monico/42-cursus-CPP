@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 19:28:54 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/08 01:51:04 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:51:00 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@ Cat::Cat(void) : Animal()
 {
 	this->type = "Unknown";
 	std::cout << "[Cat Default constructor " << this->type << "]" << std::endl;
+	this->_brain = new Brain;
 }
 
 Cat::Cat(std::string name) : Animal(name)
 {
 	this->type = name;
 	std::cout << "[Cat Parameterized constructor " << this->type << "]" << std::endl;
+	this->_brain = new Brain;
 }
 
 Cat::~Cat(void)
 {
+	delete this->_brain;
 	std::cout << "[Cat Default destructor " << this->type << "]" << std::endl;
 }
 
