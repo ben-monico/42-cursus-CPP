@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 01:57:06 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/10 15:49:40 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/04/10 15:03:34 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/04/11 01:02:33 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
 # include <iostream>
+# include <list>
 # include <string>
-# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class AMateria;
-class ICharacter
+class Character : public ICharacter
 {
 	public:
-
 		// Constructors
-		ICharacter();
-		ICharacter(const ICharacter &copy);
+		Character();
+		Character(std::string name);
+		Character(const Character &copy);
 		
 		// Destructor
-		virtual ~ICharacter();
+		~Character();
 		
 		// Operators
-		ICharacter & operator=(const ICharacter &assign);
+		Character & operator=(const Character &assign);
 		
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
-		
+		virtual std::string const & getName() const;
+		virtual void equip(AMateria* m);
+		virtual void unequip(int idx);
+		virtual void use(int idx, ICharacter& target);
+
 	private:
-		
+		std::string _name;
+		AMateria *_inventory[4];
+		std::list <AMateria *> floor;
 };
 
 #endif

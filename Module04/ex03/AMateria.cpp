@@ -6,14 +6,14 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:57:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/08 02:12:30 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/10 16:17:18 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
 // Constructors
-AMateria::AMateria() : _type("Undefined")
+AMateria::AMateria() : _type("materia")
 {
 	std::cout << "\e[0;33mDefault Constructor called of AMateria\e[0m" << std::endl;
 }
@@ -35,7 +35,6 @@ AMateria::~AMateria()
 	std::cout << "\e[0;31mDestructor called of AMateria\e[0m" << std::endl;
 }
 
-
 // Operators
 AMateria & AMateria::operator=(const AMateria &assign)
 {
@@ -45,6 +44,8 @@ AMateria & AMateria::operator=(const AMateria &assign)
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << "Materia: '*" << this->_type << " does something abstract at " \
-	<< target.getName() << " *'" << std::endl;
+	std::cout << "* " << this->_type << " does something abstract to " \
+	<< target.getName() << " *" << std::endl;
 }
+
+std::string const & AMateria::getType() const {	return this->_type; }
