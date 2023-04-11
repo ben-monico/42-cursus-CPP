@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:03:34 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/11 01:02:33 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:49:46 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Character : public ICharacter
 		~Character();
 		
 		// Operators
-		Character & operator=(const Character &assign);
+		virtual Character & operator=(const Character &assign);
 		
 		virtual std::string const & getName() const;
 		virtual void equip(AMateria* m);

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:57:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/10 16:17:18 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:27:47 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ AMateria::AMateria(std::string const & type) : _type(type)
 
 AMateria::AMateria(const AMateria &copy)
 {
-	this->_type = copy._type;
+	(void) copy;
 	std::cout << "\e[0;33mCopy Constructor called of AMateria\e[0m" << std::endl;
 }
 
@@ -38,7 +38,7 @@ AMateria::~AMateria()
 // Operators
 AMateria & AMateria::operator=(const AMateria &assign)
 {
-	this->_type = assign._type;
+	(void) assign; 
 	return *this;
 }
 

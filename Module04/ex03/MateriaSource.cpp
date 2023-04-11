@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:29:31 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/10 21:32:09 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:00:08 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ MateriaSource::~MateriaSource()
 	std::cout << "\e[0;31mDestructor called of MateriaSource\e[0m" << std::endl;
 	for (int i = 0; i < 4; i++)
 		if (_storage[i])
-		{
 			delete _storage[i];
-			_storage[i] = NULL;
-		}
 }
 
 
@@ -63,7 +60,13 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	AMateria *mat = NULL;
 
 	for (int i = 0; i < 4; i++)
+	{
 		if (_storage[i] && _storage[i]->getType() == type)
+		{
 			_storage[i]->getType() == "ice" ? mat = new Ice() : mat = new Cure();
+			break ;	
+		}
+			
+	}
 	return mat;
 }

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:03:32 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/11 02:31:29 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:49:12 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ Character::Character(std::string name) : ICharacter(), _name(name)
 Character::Character(const Character &copy) : ICharacter(copy)
 {
 	std::cout << "\e[0;33mCopy Constructor called of Character\e[0m" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		_inventory[i] = NULL;	
+		if (copy._inventory[i])
+			copy._inventory[i]->getType() == "ice" ? _inventory[i] = new Ice() : _inventory[i] = new Cure();
+	}
+			
 }
 
 // Destructor
@@ -41,17 +48,16 @@ Character::~Character()
 	for (int i = 0; i < 4; i++)
 		if (_inventory[i])
 			delete _inventory[i];
-	while (floor.front())
-	{
-		delete floor.front();
-	}
+	std::list<AMateria*>::iterator it;
+	for (it = floor.begin(); it != floor.end(); ++it)
+		delete *it;
 }
 
 // Operators
 Character & Character::operator=(const Character &assign)
 {
 	std::cout << "\e[0;31mAO called of Character\e[0m" << std::endl;
-	(void) assign;
+	(void)assign;
 	return *this;
 }
 
@@ -60,6 +66,8 @@ void Character::equip(AMateria* m)
 {
 	if (!m)
 		return ;
+	if (_inventory[3] != NULL)
+		this->floor.push_front(m);
 	for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i] == NULL)

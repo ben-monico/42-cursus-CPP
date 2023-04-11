@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 19:27:46 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/08 01:50:21 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:02:06 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int main()
 {
 	AAnimal *rafeiro = new Dog;
-	Dog bolinhas("bolinhas");
 	Cat pantufa("pantufa");
+	Dog bolinhas("bolinhas");
 
 	rafeiro->getType();
 	rafeiro->makeSound();

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 19:28:54 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/08 01:51:00 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:00:11 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,20 @@ Cat::~Cat(void)
 Cat::Cat(Cat const &C) : Animal(type)
 {
 	this->type = C.type;
+	this->_brain = new Brain;
 	std::cout << "[Cat Copy Constructor " << this->type << "]" << std::endl;
 }
 
 Cat &Cat::operator =(Cat const &C)
 {
-	this->type = C.type;
-	std::cout << "[Cat AO called " << this->type << "]" << std::endl;
+	if (this != &C)
+	{
+		if (this->_brain)
+			delete this->_brain;
+		this->_brain = new Brain;
+		this->type = C.type;
+	}
+	std::cout << "[Cat AO " << this->type << "]" << std::endl;
 	return *this;
 }
 

@@ -50,6 +50,7 @@
 		"typeinfo": "cpp",
 		"fstream": "cpp",
 		"cstring": "cpp",
-		"numbers": "cpp"
+		"numbers": "cpp",
+		"list": "cpp"
 	}
 }
