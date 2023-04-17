@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/17 18:52:46 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:58:10 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,19 @@ void Bureaucrat::increment()
 		throw GradeTooLowException();
 	else
 		_grade--;
+}
+
+void Bureaucrat::signForm(AForm &F)
+{
+	try
+	{
+		F.beSigned(*this);
+	}
+	catch(const AForm::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+		std::cerr << this->_name << "couldn't sign " << F.getName() \
+		<< " because his grade is not high enough." << std::endl;
+	}
+	
 }
