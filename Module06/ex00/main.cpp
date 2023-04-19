@@ -5,35 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 18:04:40 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/19 00:15:27 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/04/19 01:18:43 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/04/19 01:20:06 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Intern.hpp"
+#include "ScalarConverter.hpp"
+#include <iostream>
 
-int main()
+int main(int argc, char **argv)
 {
-		Intern Jeff;
-		AForm *form;
-		{
-			form = Jeff.makeForm("robotomy request", "Shrek");
-			std::cout << *form << std::endl;
-		}
-		{
-			form = Jeff.makeForm("shrubbery creation", "Fiona");
-			std::cout << *form << std::endl;
-		}
-		{
-			form = Jeff.makeForm("presidential pardon", "Donkey");
-			std::cout << *form << std::endl;
-		}
-		{
-			form = Jeff.makeForm("afsdfafd", "Dragon");
-		}
-		{
-			form = Jeff.makeForm("", "Pinnocchio");
-		}
-		
+	if (argc != 2)
+	{
+		std::cout << "Invalid number of args" << std::endl;
+		return 1;
+	}
+	ScalarConverter::convert(argv[1]);
+	return 0;
 }

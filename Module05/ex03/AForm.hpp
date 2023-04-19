@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:03 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/18 16:59:47 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/18 23:51:20 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ class AForm
 		virtual int getExecGrade() const;
 		void execute(Bureaucrat const & executor) const;
 		void CatchExceptions(Bureaucrat const &) const;
+		virtual ~AForm();
 	
 	protected:
 		AForm(std::string name, int signGrade, int execGrade);
 		AForm(const AForm &copy);
 		AForm & operator=(const AForm &assign);
-		virtual ~AForm();
 		virtual void execution() const = 0;
 		
 		
