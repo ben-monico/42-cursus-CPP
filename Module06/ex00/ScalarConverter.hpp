@@ -19,6 +19,8 @@ class ScalarConverter
 		static void convert(std::string literal);
 
 	private:
+		static bool isChar;
+		static bool isLimit(std::string literal);
 		static std::string convertChar(std::string literal);
 		static std::string convertInt(std::string literal);
 		static std::string convertFloat(std::string literal);
