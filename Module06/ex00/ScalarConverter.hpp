@@ -3,6 +3,12 @@
 
 # include <iostream>
 # include <string>
+# include <limits>
+# include <cmath>
+# include <cstdlib>
+#include <limits.h>
+#include <stdio.h>
+
 
 class ScalarConverter
 {
@@ -19,10 +25,18 @@ class ScalarConverter
 		static void convert(std::string literal);
 
 	private:
-		static std::string convertChar(std::string literal);
-		static std::string convertInt(std::string literal);
-		static std::string convertFloat(std::string literal);
-		static std::string convertDouble(std::string literal);
+		static char _c;
+		static int _i;
+		static float _f;
+		static double _d;
+		
+		static std::string getType(std::string literal);
+		static void converter(char literal);
+		static void converter(int literal);
+		static void converter(float literal);
+		static void converter(double literal);
+		static void convertToType(std::string type, std::string literal);
+		static void impossible(void);
 };
 
 #endif
