@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:44:30 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/24 19:36:53 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:22:09 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,28 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &assign)
 
 void ScalarConverter::converter(char literal)
 {
-	_i = static_cast<int>(literal);
-	_f = static_cast<float>(literal);
-	_d = static_cast<double>(literal);
+	std::cout << "char: " << literal << std::endl;
+    std::cout << "int: " << static_cast<int>(literal) << std::endl;
+    std::cout << "float: " << static_cast<float>(literal) << ".0f" << std::endl;
+    std::cout << "double: " << static_cast<double>(literal) << ".0" << std::endl;
 }
 
 void ScalarConverter::converter(int literal)
 {
-	if (literal >= 0 && literal <= 255)
-		_c = static_cast<char>(literal);
-	_f = static_cast<float>(literal);
-	_d = static_cast<double>(literal);
+	std::cout << "char: ";
+	if (literal < 0 || literal > 255) std::cout << "impossible" << std::endl;
+	else if (literal < 32 || literal > 126) std::cout << "Non Displayable" << std::endl;
+	else std::cout << static_cast<char>(literal) << std::endl;
+    std::cout << "int: " << static_cast<int>(literal) << std::endl;
+    std::cout << "float: " << static_cast<float>(literal) << ".0f" << std::endl;
+    std::cout << "double: " << static_cast<double>(literal) << ".0" << std::endl;
 }
 
 void ScalarConverter::converter(float literal)
 {
 	if (literal >= 0 && literal <= 255)
 		_c = static_cast<char>(literal);
-	if (literal >= -2147483648 && literal <= 2147483647)
+	if (literal >= -2147483648.f && literal <= 2147483647.f)
 		_i = static_cast<int>(literal);
 	_d = static_cast<double>(literal);
 }
@@ -78,10 +82,6 @@ void ScalarConverter::converter(double literal)
 
 std::string ScalarConverter::getType(std::string literal)
 {
-	if (literal == "nanf" || literal == "inff" || literal == "-inff" || literal == "+inff")
-		return "float";
-	if (literal == "nan" || literal == "inf" || literal == "-inf" || literal == "+inf")
-		return "double";
 	if (literal.find_first_not_of("+0123456789") == std::string::npos && \
 	literal[0] == '+' && literal.length() > 1)
 		literal.erase(0, 1);
@@ -167,8 +167,8 @@ void ScalarConverter::impossible()
 {
 	std::cout << "char: " << "impossible" << std::endl;
     std::cout << "int: " << "impossible" << std::endl;
-    std::cout << "float: " << "impossible" << std::endl;
-    std::cout << "double: " << "impossible" << std::endl;
+    std::cout << "float: " << "nanf" << std::endl;
+    std::cout << "double: " << "nan" << std::endl;
 	exit(1);
 }
 
