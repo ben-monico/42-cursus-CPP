@@ -3,11 +3,10 @@
 
 # include <iostream>
 # include <string>
-# include <limits>
+# include <climits>
 # include <cmath>
 # include <cstdlib>
-#include <limits.h>
-#include <stdio.h>
+
 
 
 class ScalarConverter
