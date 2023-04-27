@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:44:30 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/26 23:54:36 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:58:08 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ ScalarConverter::ScalarConverter(const ScalarConverter &copy)
 	std::cout << "\e[0;33mCopy Constructor called of ScalarConverter\e[0m" << std::endl;
 }
 
-
 // Destructor
 ScalarConverter::~ScalarConverter()
 {
 	std::cout << "\e[0;31mDestructor called of ScalarConverter\e[0m" << std::endl;
 }
-
 
 // Operators
 ScalarConverter & ScalarConverter::operator=(const ScalarConverter &assign)
@@ -45,8 +43,6 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &assign)
 
 void ScalarConverter::convert(std::string literal)
 {
-	// if (literal.empty())
-	// 	impossible();
 	const std::string Flimits[4] = {"inff", "-inff", "+inff", "nanf"};
 	const std::string Dlimits[4] = {"inf", "-inf", "+inf", "nan"};
 	for (int j = 0; j < 4; j++)
@@ -69,24 +65,18 @@ std::string ScalarConverter::getType(std::string literal)
 	if (literal.empty())
 		impossible();
 	int j = 0, dot = 0, minus = 0, fchar = 0, plus = 0;
-	for (; literal[j]; j++)
+	for (; literal[j] && literal.length() > 1; j++)
 	{
 		dot += (literal[j] == '.');
-		if (literal[j] == '+')
-		{
-			if (j == 0)	plus++; else return ("impossibr");
-		}
-		else if (literal[j] == '-')
-		{
-			if (j == 0)	minus++; else return ("impossibru");
-		}
-		else if (literal[j] == 'f')
-		{
-			if (j == (int)literal.length() - 1) fchar++; else return ("impossibro");
-		}
-		else if ((!isdigit(literal[j]) && literal[j] != '.') \
+		plus += (literal[j] == '+');
+		minus += (literal[j] == '-');
+		fchar += (literal[j] == 'f');
+		//Invalid cases
+		if (((literal[j] == '+' || literal[j] == '-') && j != 0) \
+		|| (literal[j] == 'f' && j != (int)literal.length() - 1) \
+		|| (!isdigit(literal[j]) && literal[j] != '.' && literal[j] != 'f' && literal[j] != '-' && literal[j] != '+') \
 		|| dot > 1 || minus > 1 || fchar > 1 || plus > 1)
-			return "impossible" ;
+			return ("impossibru");
 	}
 	if (literal.length() == 1 && !isdigit(literal[0]))
 		return "char";
