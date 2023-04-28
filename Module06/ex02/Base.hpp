@@ -5,7 +5,9 @@
 # include <string>
 # include "Base.hpp"
 
-
+class A;
+class B;
+class C;
 class Base
 {
 	public:
@@ -21,5 +23,9 @@ class Base
 	private:
 		
 };
+
+class A : public Base {};
+class B : public Base  {};
+class C  : public Base {};
 
 #endif
