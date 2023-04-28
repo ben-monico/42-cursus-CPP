@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:03 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/18 23:51:20 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:28:42 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <string>
@@ -19,9 +19,21 @@
 
 class Bureaucrat;
 
-class AForm
+class Form
 {
 	public:
+		Form(std::string name, int signGrade, int execGrade);
+		Form(const Form &copy);
+		~Form();
+		Form & operator=(const Form &assign);
+		
+		void beSigned(Bureaucrat &B);
+
+		std::string getName() const;
+		bool getSignBool() const;
+		int getSignGrade() const;
+		int getExecGrade() const;
+	
 		class GradeTooHighException : public std::exception	{
 			public:
 				virtual const char* what() const throw();
@@ -30,36 +42,16 @@ class AForm
 			public:
 				virtual const char* what() const throw();
 		};
-		class UnsignedException : public std::exception	{
-			public:
-				virtual const char* what() const throw();
-		};
-
-		virtual void beSigned(Bureaucrat &B);
-		virtual std::string getName() const;
-		virtual bool getSignBool() const;
-		virtual int getSignGrade() const;
-		virtual int getExecGrade() const;
-		void execute(Bureaucrat const & executor) const;
-		void CatchExceptions(Bureaucrat const &) const;
-		virtual ~AForm();
-	
-	protected:
-		AForm(std::string name, int signGrade, int execGrade);
-		AForm(const AForm &copy);
-		AForm & operator=(const AForm &assign);
-		virtual void execution() const = 0;
-		
-		
 		
 	private:
-		AForm();
+		Form();
 		std::string const _name;
 		bool _isSigned;
 		int const _signGrade;
 		int const _execGrade;
+		
+		
 };
-
-std::ostream & operator<<(std::ostream &out, AForm &F);
+std::ostream & operator<<(std::ostream &out, Form &F);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:04:40 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/18 18:53:56 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:18:49 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 int main()
 {
+	try
+	{
 		Bureaucrat a("Arnold", 19);
 		Bureaucrat b("Ben", 138);
 		ShrubberyCreationForm S("Cowabunga");
@@ -32,7 +34,22 @@ int main()
 		b.increment();
 		b.executeForm(S);
 		a.executeForm(S);
-
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::UnsignedException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "______________________________________" << std::endl;
+	try
+	{
 		Bureaucrat c("Cronix", 46);
 		Bureaucrat d("Darius", 3);
 		RobotomyRequestForm R("Shrek");
@@ -64,4 +81,17 @@ int main()
 		d.executeForm(R);
 		d.executeForm(R);
 		d.executeForm(P);
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::UnsignedException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

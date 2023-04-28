@@ -6,31 +6,30 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/18 17:49:48 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:26:23 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 // Constructors
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName()), _grade(copy.getGrade())
-{
-	std::cout << "\e[0;33mCopy Constructor called of Bureaucrat\e[0m" << this->_name << std::endl;
-}
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
 	std::cout << "\e[0;33mParameter Constructor called of Bureaucrat \e[0m" << this->_name << std::endl;
 	if (grade < 1)
 		throw(GradeTooHighException());
 	else if (grade > 150)
 		throw(GradeTooLowException());
-	else
-		this->_grade = grade;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName()), _grade(copy.getGrade())
+{
+	std::cout << "\e[0;33mCopy Constructor called of Bureaucrat\e[0m" << this->_name << std::endl;
 }
 
 // Destructor
@@ -77,7 +76,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 void Bureaucrat::decrement()
 {
 	if (_grade == 150)
-		throw GradeTooHighException();
+		throw GradeTooLowException();
 	else
 		_grade++;
 }
@@ -85,41 +84,7 @@ void Bureaucrat::decrement()
 void Bureaucrat::increment()
 {
 	if (_grade == 1)
-		throw GradeTooLowException();
+		throw GradeTooHighException();
 	else
 		_grade--;
-}
-
-void Bureaucrat::signForm(AForm &F)
-{
-	try
-	{
-		F.beSigned(*this);
-		std::cout << this->_name << "\e[0;32m signed \e[0m" << F.getName() << std::endl;
-	}
-	catch(const AForm::GradeTooLowException& e)
-	{
-		std::cerr << this->_name << "\e[0;31m couldn't sign \e[0m" << F.getName() \
-		<< "\e[0;31m because his grade is not high enough.\e[0m" << std::endl;
-	}
-	
-}
-
-void Bureaucrat::executeForm(AForm const & form)
-{
-	try
-	{
-		form.execute(*this);
-		std::cout << this->_name << "\e[0;32m executed \e[0m" << form.getName() << std::endl;
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
-		std::cout << this->_name << "\e[0;31m could not execute form because: \e[0m";
-		std::cout << e.what() << std::endl;
-	}
-	catch (AForm::UnsignedException &e)
-	{
-		std::cout << this->_name << "\e[0;31m could not execute form because: \e[0m";
-		std::cout << e.what() << std::endl;
-	}
 }

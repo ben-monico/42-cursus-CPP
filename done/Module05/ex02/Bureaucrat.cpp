@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/27 15:26:18 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:36:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ void Bureaucrat::executeForm(AForm const & form)
 	}
 	catch (AForm::GradeTooLowException &e)
 	{
-		std::cout << this->_name << "\e[0;31m could not execute form because: \e[0m";
+		std::cout << this->_name << "\e[0;31m could not execute form " << form.getName() << " because: \e[0m";
 		std::cout << e.what() << std::endl;
 	}
 	catch (AForm::UnsignedException &e)
 	{
-		std::cout << this->_name << "\e[0;31m could not execute form because: \e[0m";
+		std::cout << this->_name << "\e[0;31m could not execute form " << form.getName() << " because: \e[0m";
 		std::cout << e.what() << std::endl;
 	}
 }

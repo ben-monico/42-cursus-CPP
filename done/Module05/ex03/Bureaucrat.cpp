@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/17 17:58:10 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:37:47 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,31 @@ void Bureaucrat::signForm(AForm &F)
 	try
 	{
 		F.beSigned(*this);
+		std::cout << this->_name << "\e[0;32m signed \e[0m" << F.getName() << std::endl;
 	}
 	catch(const AForm::GradeTooLowException& e)
 	{
-		std::cerr << e.what() << '\n';
-		std::cerr << this->_name << "couldn't sign " << F.getName() \
-		<< " because his grade is not high enough." << std::endl;
+		std::cerr << this->_name << "\e[0;31m couldn't sign \e[0m" << F.getName() \
+		<< "\e[0;31m because his grade is not high enough.\e[0m" << std::endl;
 	}
 	
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << "\e[0;32m executed \e[0m" << form.getName() << std::endl;
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cout << this->_name << "\e[0;31m could not execute form " << form.getName() << " because: \e[0m";
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::UnsignedException &e)
+	{
+		std::cout << this->_name << "\e[0;31m could not execute form " << form.getName() << " because: \e[0m";
+		std::cout << e.what() << std::endl;
+	}
 }

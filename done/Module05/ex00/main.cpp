@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:04:40 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/17 18:54:22 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:27:37 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main()
 	
 	try
 	{
-		Bureaucrat a("Cro", 151);
+		Bureaucrat a("Cro", 4235225);
 		std::cout << a <<std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e)

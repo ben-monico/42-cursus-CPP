@@ -20,9 +20,12 @@ AForm::AForm() : _name("Default"), _isSigned(false), _signGrade(1), _execGrade(1
 AForm::AForm(std::string name, int signGrade, int execGrade) : _name(name), _isSigned(false), \
 _signGrade(signGrade), _execGrade(execGrade)
 {
-	std::cout << "\e[0;33mDefault Constructor called of AForm \e[0m" << this->_name << std::endl;
+	std::cout << "\e[0;33mDefault Constructor called of Form \e[0m" << this->_name << std::endl;
+	if (signGrade < 1 || execGrade < 1)
+		throw(AForm::GradeTooHighException());
+	else if (signGrade > 150 || execGrade > 150)
+		throw(AForm::GradeTooLowException());
 }
-
 AForm::AForm(const AForm &copy) : _name(copy.getName()), _isSigned(copy.getSignBool()), _signGrade(copy.getSignGrade()), _execGrade(copy.getExecGrade())
 {
 	std::cout << "\e[0;33mCopy Constructor called of AForm\e[0m" << std::endl;
@@ -35,7 +38,10 @@ AForm::~AForm()
 
 AForm & AForm::operator=(const AForm &assign)
 {
-	this->_isSigned = assign.getSignBool();
+	if (this->_signGrade <= assign.getSignGrade())
+		this->_isSigned = assign.getSignBool();
+	else
+		throw AForm::GradeTooLowException();
 	return *this;
 }
 
@@ -65,34 +71,19 @@ std::ostream &operator<<(std::ostream &out, AForm &F)
 
 void AForm::beSigned(Bureaucrat &B)
 {	
-	if (B.getGrade() > this->getSignGrade() || B.getGrade() > this->getExecGrade())
+	if (B.getGrade() > this->getSignGrade())
 		throw AForm::GradeTooLowException();
-	this->_isSigned = true;
+	else
+		this->_isSigned = true;
 }
 
 void AForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
-		CatchExceptions(executor);
-		execution();
-	}
-	catch (AForm::GradeTooLowException &e)
-	{
+	if (executor.getGrade() > this->getExecGrade())
 		throw AForm::GradeTooLowException();
-	}
-	catch (AForm::UnsignedException &e)
-	{
+	else if (this->_isSigned == false)
 		throw AForm::UnsignedException();
-	}
-}
-
-void AForm::CatchExceptions(Bureaucrat const & B) const
-{
-	if (B.getGrade() > this->getSignGrade() || B.getGrade() > this->getExecGrade())
-		throw AForm::GradeTooLowException();
-	else if (_isSigned == false)
-		throw AForm::UnsignedException();
+	execution();
 }
 
 
