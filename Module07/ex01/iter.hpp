@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:15:12 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/02 16:26:26 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:28:06 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include <iostream>
 # include <string>
 
-template <class T>
+template <typename T>
 void print(T &t)
 {
 	std::cout << t << std::endl;
 }
 
-template <class T>
+template <typename T>
 void iter(T	*arr, std::size_t len, void (*func)(T &t))
 {
 	for (std::size_t i = 0; i < len; i++)
