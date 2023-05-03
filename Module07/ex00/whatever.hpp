@@ -4,21 +4,21 @@
 # include <iostream>
 # include <string>
 
-class whatever
+template <typename T> void swap(T &x, T &y)
 {
-	public:
-		// Constructors
-		whatever();
-		whatever(const whatever &copy);
-		
-		// Destructor
-		~whatever();
-		
-		// Operators
-		whatever & operator=(const whatever &assign);
-		
-	private:
-		
-};
+	T tmp = x;
+	x = y;
+	y = tmp;
+}
+
+template <typename T> T const & min(T const &x, T const &y)
+{
+	return (x < y) ? x : y;
+}
+
+template <typename T> T const & max(T const &x, T const &y)
+{
+	return (x > y) ? x : y;
+}
 
 #endif

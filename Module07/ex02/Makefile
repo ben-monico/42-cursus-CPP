@@ -1,8 +1,8 @@
-NAME = template
+NAME = array
 
-SRCS = main.cpp
+SRCS = 	main.cpp
 
-CC = c++ -std=c++98 -Wall -Wextra -Werror -Wshadow
+CC = c++ -std=c++98 -Wall -Wextra -Werror -Wshadow -g
 
 all: $(NAME)
 
