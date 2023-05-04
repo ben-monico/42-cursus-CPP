@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:53:42 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/02 19:49:53 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:43:26 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,35 @@
 template <typename T>
 class Array
 {
+	private:
+		T *_arr;
+		unsigned int _size;
+
 	public:
 		// Constructors
-		Array()
+		Array<T>() : _size(0)
 		{
 			std::cout << "\e[0;33mDefault Constructor called of Array\e[0m" << std::endl;
 			_arr = new T[0];
-			_size = 0;
 		}
 
-		Array(int n)
+		Array<T>(unsigned int n) : _size(n)
 		{
 			std::cout << "\e[0;33mDefault Constructor called of Array\e[0m" << std::endl;
 			_arr = new T[n];
-			_size = n;
-			if (n < 0)
-			{
-				std::cout << "\e[0;31mError: Negative size\e[0m" << std::endl;
-				throw std::exception();
-			}
 		}
 
-		Array(const Array &copy)
+		Array<T>(const Array &copy)
 		{
 			_arr = new T[copy.size()];
 			_size = copy.size();
-			for (int i = 0; i < copy.size(); i++)
+			for (unsigned int i = 0; i < copy.size(); i++)
 				_arr[i] = copy[i];
 			std::cout << "\e[0;33mCopy Constructor called of Array\e[0m" << std::endl;
 		}
 		
 		// Destructor
-		~Array()
+		~Array<T>()
 		{
 			std::cout << "\e[0;31mDestructor called of Array\e[0m" << std::endl;
 			delete [] _arr;
@@ -65,31 +62,28 @@ class Array
 				delete [] _arr;
 				_arr = new T[assign.size()];
 				_size = assign.size();
-				for (int i = 0; i < assign.size(); i++)
+				for (unsigned int i = 0; i < assign.size(); i++)
 					_arr[i] = assign[i];
 			}
 			return *this;
 		}
 		
-		T & operator[](int n)
+		T & operator[](unsigned int n)
 		{
-			if (n >= _size || n < 0)
+			if (n >= _size)
 				throw std::exception();
 			return _arr[n];
 		}
 
-		T & operator[](int n) const
+		T & operator[](unsigned int n) const
 		{
 			if (n >= _size || n < 0)
 				throw std::exception();
 			return _arr[n];
 		}
 		
-		int size() const { return _size; }
+		unsigned int size() const { return _size; }
 
-	private:
-		T *_arr;
-		int _size;
 };
 
 #endif

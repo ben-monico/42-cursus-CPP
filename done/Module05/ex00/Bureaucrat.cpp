@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/28 17:26:23 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:28:07 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ std::ostream &operator <<(std::ostream &out, const Bureaucrat &B)
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() 
 {
-	return "Grade is too low";
+	UnsignedException
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() 

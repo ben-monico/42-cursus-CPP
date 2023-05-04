@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 17:02:49 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/03 16:40:18 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/05/04 18:43:21 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/05/04 19:20:25 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP_
-#define SCAVTRAP_HPP_
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
-#include <iostream>
-#include "ClapTrap.hpp"
+# include <iostream>
+# include <string>
+# include <algorithm>
+# include <vector>
 
-class ScavTrap : virtual public ClapTrap
+template <typename T>
+typename T::iterator easyfind(T &t, int i)
 {
-private:
-	std::string _name;
+	typename T::iterator it = std::find(t.begin(), t.end(), i);
+	if (it == t.end())
+		throw std::exception();
+	return it;
+}
 
-protected:
-
-public:
-	ScavTrap();
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap const &S);
-	~ScavTrap();
-	void operator=(const ScavTrap &c);
-	void guardGate();
-	void attack(const std::string& target);
-
-};
-
-
-
-#endif // SCAVTRAP_HPP_
+#endif

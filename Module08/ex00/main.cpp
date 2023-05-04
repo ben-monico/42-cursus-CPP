@@ -5,34 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 01:56:47 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/02 16:58:29 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/05/04 18:43:48 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/05/04 19:20:04 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "easyfind.hpp"
 
-void increment(int &i)
+int main()
 {
-	i++;
-}
-
-void halfinc(float &i)
-{
-	i += 0.5f;
-}
-
-int main( void ) {
+	int arr[8] = {0, 4, 3, 5, 2, 4, 56, 43};
+	std::vector<int> vec(arr, arr  + (sizeof(arr) / sizeof(int)));
 	
-int arr[] = { 0, 1, 2, 3, 4 };
-::iter(arr, 5, increment);
-::iter(arr, 5, ::print);
-
-char str[] = "Hello World!";
-::iter(str, 13, ::print);
-
-float farr[] = { 0.0f, 1.0f, 2.0f, 3.0f, 4.0f };
-::iter(farr, 5, ::halfinc);
-::iter(farr, 5, ::print);
-
+	std::cout << *easyfind(vec, 4) << std::endl;
+	std::cout << *easyfind(vec, 56) << std::endl;
+	try
+	{
+		std::cout << *easyfind(vec, 17) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }

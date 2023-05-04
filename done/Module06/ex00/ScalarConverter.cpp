@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 01:44:30 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/04/27 14:58:08 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:06:13 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ std::string ScalarConverter::getType(std::string literal)
 			dif = literal.compare("2147483647");
 		else if (literal [0] == '+' && literal.length() == 11)
 			dif = literal.compare("+2147483647");
+		else if (isdigit(literal [0]) && literal.length() == 11)
+			return "double";
 		if (dif <= 0) return "int";	
 		else return "double";
 	}

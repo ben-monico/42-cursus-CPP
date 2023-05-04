@@ -1,4 +1,4 @@
-NAME = array
+NAME = array_t
 
 SRCS = 	main.cpp
 

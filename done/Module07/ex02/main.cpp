@@ -6,13 +6,14 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:30:43 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/02 19:50:50 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:01:45 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Array.hpp"
 #include <cmath>
+#include <cstring>
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -64,5 +65,16 @@ int main(int, char**)
         std::cout << numbers[i] << std::endl;
     }
     delete [] mirror;//
+
+    std::cout << "\n>>>>>End of first test<<<<<<\n" << std::endl;
+    
+    Array<char> str(14);
+    std::string s1 = "Hello Worlds!";
+    for (unsigned int i = 0; i < str.size(); i++)
+        str[i] = s1[i];
+    
+    for (unsigned int i = 0; i < str.size(); i++)
+        std::cout << str[i];
+    std::cout << std::endl;
     return 0;
 }

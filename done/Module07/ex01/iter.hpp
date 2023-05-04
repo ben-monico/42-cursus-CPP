@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:15:12 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/02 16:28:06 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:51:14 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 template <typename T>
 void print(T &t)
 {
-	std::cout << t << std::endl;
+	std::cout << t << " ";
 }
 
 template <typename T>
