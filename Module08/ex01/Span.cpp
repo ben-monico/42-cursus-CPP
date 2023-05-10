@@ -36,6 +36,7 @@ Span & Span::operator=(const Span &assign)
 
 void Span::fillArray(int randmax)
 {
+	_short = INT_MAX;
 	_arr.clear();
 	srand(time(0));
 	for (unsigned int i = 0; i < _storage; i++)
