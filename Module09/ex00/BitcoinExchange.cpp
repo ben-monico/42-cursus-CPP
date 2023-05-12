@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 23:42:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/11 02:08:43 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:06:16 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ std::string BitcoinExchange::isValidLine(std::string line)
 		return "Error: invalid conversion";
 	if (value <= 0)
 		return "Error: not a positive number";
-	if (value > INT_MAX || value < INT_MIN)
+	if (static_cast<long>(value) > INT_MAX || static_cast<long>(value) < INT_MIN)
 		return "Error: too large number";
 	_value = value;
 	_date = line.substr(0, 10);
@@ -130,14 +130,10 @@ void BitcoinExchange::conversion()
 {
 	std::map<std::string, float>::iterator it = _db.begin();
 	for (; it != _db.end(); ++it)
-	{
 		if (it->first > _date)
-		{
-			if (it != _db.begin())
-				--it;
 			break;
-		}
-	}
+	if (it != _db.begin())
+		--it;
 	_valueExchanged = _value * it->second;
 }
 
