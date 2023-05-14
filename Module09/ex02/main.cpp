@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:43:34 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/14 16:04:18 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/14 18:11:32 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int main(int ac, char **av)
 	int i = 0;
 	while (av[i])
 		i++;
-	PmergeMe::merge_insert(++av, i);
+	PmergeMe::execute(++av, i - 1);
 }
