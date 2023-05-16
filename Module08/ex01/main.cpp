@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:04:39 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/08 14:38:58 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:35:27 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 	sp.addNumber(17);
 	sp.addNumber(9);
 	sp.addNumber(134);
-	// sp.fillArray(1000);
+	sp.fillArray(1000);
 	std::cout << "shortest = " << sp.shortestSpan() << std::endl;
 	std::cout << "longest = " <<  sp.longestSpan() << std::endl;
 	for (int i = 0; i < 10; i++)

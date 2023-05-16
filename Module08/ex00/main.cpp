@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:43:48 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/04 19:20:04 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:33:22 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ int main()
 	try
 	{
 		std::cout << *easyfind(vec, 17) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::string str = "Hello World";
+	std::string::iterator it = easyfind(str, 'e');
+	std::cout << *it++ << std::endl;
+	std::cout << *it << std::endl;
+	try
+	{
+		std::cout << *easyfind(str, 'Z') << std::endl;
 	}
 	catch(const std::exception& e)
 	{
