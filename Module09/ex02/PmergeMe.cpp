@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:48:58 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/05/14 19:06:36 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/05/16 21:24:58 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,21 @@ void PmergeMe::execute(char **av, int size)
 	//measure clocks
 	std::clock_t start = std::clock();
 	merge_insert_vector();
-	vector_time = (double)((std::clock() - start) / (double)CLOCKS_PER_SEC);
+	vector_time = (double)((std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000));
 	start = std::clock();
 	merge_insert_list();
-	list_time = (double)((std::clock() - start) / (double)CLOCKS_PER_SEC);
+	list_time = (double)((std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000));
 	
 	//print results
 	std::cout << "Before: " << t_print(_arr) << std::endl;
 	std::cout << "After: " << t_print(_sorted_arr) << std::fixed << std::setprecision(6) << std::endl;
-	std::cout << "Time to process a range of " << size << " elements with std::vector: " << vector_time << " us" << std::endl;
-	std::cout << "Time to process a range of " << size << " elements with std::list: " << list_time << " us" << std::endl;
+	std::cout << "Time to process a range of " << size << " elements with std::vector: " << vector_time << " ms" << std::endl;
+	std::cout << "Time to process a range of " << size << " elements with std::list: " << list_time << " ms" << std::endl;
 }
 
 void PmergeMe::merge_insert_vector()
 {
+	std::vector<std::pair<int,int> > pipi;
 	for (unsigned int i = 0; i < _arr.size(); i += 2)
 	{
 		std::pair<int,int> pair;
@@ -92,9 +93,13 @@ void PmergeMe::merge_insert_vector()
 			else
 				pair.second = _arr[i + 1];
 		}
-		pairs.push_back(pair);
+		pipi.push_back(pair);
 	}
-	std::sort(pairs.begin(), pairs.end());
+	pairs.reserve(pipi.size());
+	for (unsigned int i = 0; i < pipi.size(); i++)
+		pairs.insert(lower_bound(pairs.begin(), pairs.end(), pipi[i]), pipi[i]);
+	// std::sort(pairs.begin(), pairs.end());
+	
 	for (unsigned int i = 0; i < pairs.size(); i++)
 		_sorted_arr.push_back(pairs[i].first);
 	for (unsigned int i = 0; i < pairs.size(); i++)

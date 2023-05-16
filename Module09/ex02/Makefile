@@ -3,7 +3,7 @@ NAME = PmergeMe
 SRCS = 	main.cpp \
 		PmergeMe.cpp
 
-CC = c++ -std=c++98 -Wall -Wextra -Werror -Wshadow -g 
+CC = c++ -std=c++98 -Wall -Wextra -Werror -Wshadow -g -O3
 
 all: $(NAME)
 
